@@ -1,4 +1,5 @@
 
+
 export interface MenuItem {
   id: string;
   name: string;
@@ -16,10 +17,7 @@ export interface ReservationData {
   email: string;
 }
 
-/**
- * ChatMessage interface for handling AI Concierge conversation state.
- * Gemini roles are typically 'user' and 'model'.
- */
+// Added ChatMessage interface to resolve the missing export error in AIConcierge.tsx
 export interface ChatMessage {
   role: 'user' | 'model';
   text: string;

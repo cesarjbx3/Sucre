@@ -1,14 +1,10 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { Navbar } from './components/Navbar';
 import { MenuSection } from './components/MenuSection';
-import { AIConcierge } from './components/AIConcierge';
-import { ReservationModal } from './components/ReservationModal';
 import { SOCIAL_LINKS } from './constants';
+import { AIConcierge } from './components/AIConcierge';
 
 const App: React.FC = () => {
-  const [isReservationOpen, setIsReservationOpen] = useState(false);
-
   // Manejador de scroll suave robusto
   const handleScrollToMenu = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -58,12 +54,6 @@ const App: React.FC = () => {
             >
               Ver Menú
             </a>
-            <button 
-              onClick={() => setIsReservationOpen(true)}
-              className="w-full sm:w-auto border border-primary text-primary px-12 md:px-16 py-4 md:py-5 rounded-lg font-bold uppercase tracking-widest hover:bg-primary hover:text-black transition-all duration-300 text-sm md:text-base text-center active:scale-95"
-            >
-              Reservar
-            </button>
           </div>
         </div>
 
@@ -185,10 +175,9 @@ const App: React.FC = () => {
         </div>
       </footer>
 
-      {/* AI Concierge & Reservation Components */}
+      {/* Floating AI Concierge */}
       <AIConcierge />
-      <ReservationModal isOpen={isReservationOpen} onClose={() => setIsReservationOpen(false)} />
-
+      
       {/* Global CSS for Animations */}
       <style>{`
         @keyframes fade-in {

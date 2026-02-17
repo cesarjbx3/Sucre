@@ -1,6 +1,6 @@
 {
   "name": "Sucre - Artisan Coffee & Crepes",
-  "description": "A high-end artisan coffee and French creperie experience with a modern digital concierge.",
+  "description": "A high-end artisan coffee and French creperie experience.",
   "requestFramePermissions": [
     "geolocation"
   ]
