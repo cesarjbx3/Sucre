@@ -1,11 +1,14 @@
 
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { MenuSection } from './components/MenuSection';
 import { AIConcierge } from './components/AIConcierge';
+import { ReservationModal } from './components/ReservationModal';
 import { SOCIAL_LINKS } from './constants';
 
 const App: React.FC = () => {
+  const [isReservationOpen, setIsReservationOpen] = useState(false);
+
   // Manejador de scroll suave robusto
   const handleScrollToMenu = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -55,6 +58,12 @@ const App: React.FC = () => {
             >
               Ver Menú
             </a>
+            <button 
+              onClick={() => setIsReservationOpen(true)}
+              className="w-full sm:w-auto border border-primary text-primary px-12 md:px-16 py-4 md:py-5 rounded-lg font-bold uppercase tracking-widest hover:bg-primary hover:text-black transition-all duration-300 text-sm md:text-base text-center active:scale-95"
+            >
+              Reservar
+            </button>
           </div>
         </div>
 
@@ -176,7 +185,9 @@ const App: React.FC = () => {
         </div>
       </footer>
 
+      {/* AI Concierge & Reservation Components */}
       <AIConcierge />
+      <ReservationModal isOpen={isReservationOpen} onClose={() => setIsReservationOpen(false)} />
 
       {/* Global CSS for Animations */}
       <style>{`
@@ -201,6 +212,20 @@ const App: React.FC = () => {
         .animate-scale-in { animation: scale-in 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
         .animate-subtle-zoom { animation: subtle-zoom 20s linear infinite alternate; }
         html { scroll-behavior: smooth; }
+
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(192, 160, 96, 0.2);
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(192, 160, 96, 0.4);
+        }
       `}</style>
     </div>
   );
